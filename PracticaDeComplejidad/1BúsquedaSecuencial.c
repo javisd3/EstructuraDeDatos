@@ -18,10 +18,10 @@ int main() {
   // Ejemplo de uso y medición de tiempos
 
   // Definimos un tamaño de problema (N)
-  // Nota: El PDF sugiere int array[2147483647][cite: 47],
+  // Nota: El PDF sugiere int array[2147483647]
   // pero eso podría desbordar la pila. Usamos memoria dinámica o un tamaño
   // menor para el test.
-  int n = 2147483647; // 10 millones para el ejemplo
+  int n = 20000; // 10 millones para el ejemplo
   int *array = (int *)malloc(n * sizeof(int));
 
   // Inicializar el array (relleno simple para el ejemplo)

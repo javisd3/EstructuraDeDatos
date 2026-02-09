@@ -36,7 +36,7 @@ int busquedaBinaria(int *array, int tam, int elem) {
 
 int main() {
   // Ejemplo de uso
-  int n = 10000000; // 10 millones
+  int n = 20000; // 10 millones
   int *array = (int *)malloc(n * sizeof(int));
 
   // IMPORTANTE: Para búsqueda binaria, el array DEBE estar ordenado.

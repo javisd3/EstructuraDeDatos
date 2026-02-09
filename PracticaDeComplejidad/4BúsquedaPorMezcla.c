@@ -90,7 +90,7 @@ int main() {
   // Podemos probar con un tamaño mucho mayor que en Burbuja.
   // Probamos con 1 millón para notar algo de tiempo, o 100.000 si es muy
   // rápido.
-  int n = 1000000;
+  int n = 2147483647;
   int *array = (int *)malloc(n * sizeof(int));
 
   // Rellenar con aleatorios
