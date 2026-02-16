@@ -1,0 +1,83 @@
+ESPECIFICACION TipoHoraDigital
+    USA Naturales, Booleanos, Enteros
+    TIPO TipoHoraDigital
+
+Operaciones
+    // Const. generadoras
+    // Construye la hora con h (0-23), m (0-59) y s (0-59)
+    ConstruirHora: TipoHora x TipoMinuto x TipoSegundo -> TipoHoraDigital
+
+    // Obser. selectoras
+    Horas: TipoHoraDigital -> TipoHora
+    Minutos: TipoHoraDigital -> TipoMinuto
+    Segundos: TipoHoraDigital -> TipoSegundo
+
+    // Obser. no selectoras
+    EnPunto: TipoHoraDigital -> Booleano
+    EsPosterior: TipoHoraDigital x TipoHoraDigital -> Booleano
+    Distancia: TipoHoraDigital x TipoHoraDigital -> Entero
+
+    // Transformadoras
+    SegundosAHora: Natural -> TipoHoraDigital
+    Incrementar: TipoHoraDigital x Natural -> TipoHoraDigital
+    Suma: TipoHoraDigital x TipoHoraDigital -> TipoHoraDigital
+
+    // Auxiliares (Facilita convertir todo a un número único para operar)
+    A_Segundos: TipoHoraDigital -> Natural
+
+VARIABLES
+    h: TipoHora;
+    m: TipoMinuto;
+    s: TipoSegundo;
+    n: Natural;
+    hd1, hd2: TipoHoraDigital;
+
+ECUACIONES
+    // -------------------------------------------------------
+    // 1. SELECTORAS Y AUXILIARES
+    // -------------------------------------------------------
+
+    // Obser. selectoras: Extraen los componentes
+    Horas(ConstruirHora(h, m, s)) = h
+    Minutos(ConstruirHora(h, m, s)) = m
+    Segundos(ConstruirHora(h, m, s)) = s
+
+    // Auxiliar: Convierte la hora completa a segundos totales
+    // Formula: horas*3600 + minutos*60 + segundos
+    A_Segundos(ConstruirHora(h, m, s)) = (h * 3600) + (m * 60) + s
+
+
+    // -------------------------------------------------------
+    // 2. OBSERVADORAS NO SELECTORAS
+    // -------------------------------------------------------
+
+    // EnPunto: Cierto si minutos y segundos son cero
+    EnPunto(ConstruirHora(h, m, s)) = (m = 0) Y (s = 0)
+
+    // EsPosterior: Compara los segundos totales
+    EsPosterior(hd1, hd2) = A_Segundos(hd1) > A_Segundos(hd2)
+
+    // Distancia: Diferencia en segundos.
+    [cite_start]// Si hd1 es posterior (mayor), la resta (hd2 - hd1) dará negativo, como pide el enunciado[cite: 90].
+    Distancia(hd1, hd2) = Entero(A_Segundos(hd2)) - Entero(A_Segundos(hd1))
+
+
+    // -------------------------------------------------------
+    // 3. TRANSFORMADORAS
+    // -------------------------------------------------------
+
+    // SegundosAHora: Reconstruye la hora usando división y resto
+    // h = total DIV 3600 (MOD 24 para reloj circular)
+    // m = (total DIV 60) MOD 60
+    // s = total MOD 60
+    SegundosAHora(n) = ConstruirHora(
+        (n DIV 3600) MOD 24,
+        (n DIV 60) MOD 60,
+        n MOD 60
+    )
+
+    // Incrementar: Convierte a segundos, suma n, y reconvierte
+    Incrementar(hd1, n) = SegundosAHora(A_Segundos(hd1) + n)
+
+    // Suma: Suma los segundos de ambas horas y reconvierte
+    Suma(hd1, hd2) = SegundosAHora(A_Segundos(hd1) + A_Segundos(hd2))

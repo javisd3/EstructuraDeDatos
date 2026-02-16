@@ -1,0 +1,46 @@
+ESPECIFICACION ComplejosExt
+    USA Reales, Booleanos
+    TIPO Complejo
+
+Operaciones
+    // Const. generadoras
+    // Construye el complejo a + bi
+    CrearComplejo: Real x Real -> Complejo
+
+    // Obser. no selectoras
+    EsImaginarioPuro: Complejo -> Booleano
+    EsReal: Complejo -> Booleano
+    EsNulo: Complejo -> Booleano
+
+    // Transformadoras / Operaciones de cálculo
+    // Devuelve el argumento (ángulo) en radianes
+    Argumento: Complejo -> Real
+
+    // Auxiliares (Del TAD Reales, asumidas)
+    Arctg: Real -> Real
+    Pi: -> Real
+
+VARIABLES
+    a, b: Real;
+
+ECUACIONES
+    // 1. EsImaginarioPuro
+    // Cierto si la parte real (a) es 0
+    EsImaginarioPuro(CrearComplejo(a, b)) = (a = 0)
+
+    // 2. EsReal
+    // Cierto si la parte imaginaria (b) es 0 
+    EsReal(CrearComplejo(a, b)) = (b = 0)
+
+    // 3. EsNulo
+    // Cierto si ambas partes son 0 [cite: 19]
+    EsNulo(CrearComplejo(a, b)) = (a = 0) Y (b = 0)
+
+    // 4. Argumento
+    // Definición por casos basada en el cuadrante 
+    Argumento(CrearComplejo(a, b)) = 
+        SI (a > 0) ENTONCES Arctg(b/a)
+        SINO SI (a < 0 Y b >= 0) ENTONCES Arctg(b/a) + Pi
+        SINO SI (a < 0 Y b < 0) ENTONCES Arctg(b/a) - Pi
+        SINO SI (a = 0 Y b > 0) ENTONCES Pi/2
+        SINO -Pi/2   // Último caso: a=0 y b<0
