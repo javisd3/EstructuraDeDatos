@@ -8,7 +8,7 @@ Operaciones
     ConstruirHora: TipoHora x TipoMinuto x TipoSegundo -> TipoHoraDigital
 
     // Obser. selectoras
-    Horas: TipoHoraDigital -> TipoHora
+    Horas: TipoHoraDigital -> TipoHorasd
     Minutos: TipoHoraDigital -> TipoMinuto
     Segundos: TipoHoraDigital -> TipoSegundo
 
