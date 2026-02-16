@@ -1,0 +1,39 @@
+ESPECIFICACION NaturalesExt
+    USA Booleanos
+    TIPO TNatural
+
+Operaciones
+    // Const. generadoras
+    Cero: -> TNatural
+    Suc: TNatural -> TNatural
+
+    // Obser. no selectoras
+    EsImpar: TNatural -> Booleano
+    EsMenor: TNatural x TNatural -> Booleano
+
+    // Transformadoras
+    Resta: TNatural x TNatural -> TNatural
+    Mcd: TNatural x TNatural -> TNatural
+    
+    // Auxiliares
+    Mod: TNatural x TNatural -> TNatural
+
+VARIABLES
+    n, m: TNatural;
+
+ECUACIONES
+    // Obser. no selectoras
+    EsImpar(Cero) = Falso
+    EsImpar(Suc(n)) = NO EsImpar(n)
+
+    EsMenor(n, Cero) = Falso
+    EsMenor(Cero, Suc(m)) = Cierto
+    EsMenor(Suc(n), Suc(m)) = EsMenor(n, m)
+
+    // Transformadoras
+    Resta(n, Cero) = n
+    Resta(Suc(n), Suc(m)) = Resta(n, m)
+
+    // Mcd (Usando lógica condicional limpia)
+    Mcd(n, m) = SI (n Mod m = 0) ENTONCES m 
+                SINO Mcd(m, n Mod m)

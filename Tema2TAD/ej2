@@ -1,0 +1,30 @@
+ESPECIFICACION BooleanosExt
+    USA Booleanos
+    TIPO Booleano
+
+Operaciones
+    // Const. generadoras (Base del TAD Booleanos)
+    Cierto: -> Booleano
+    Falso: -> Booleano
+
+    // Operaciones base (Asumidas disponibles)
+    NO: Booleano -> Booleano
+    O: Booleano x Booleano -> Booleano
+
+    // Transformadoras (Nuevas operaciones pedidas)
+    Xor: Booleano x Booleano -> Booleano
+    Implicacion: Booleano x Booleano -> Booleano
+
+VARIABLES
+    a, b: Booleano;
+
+ECUACIONES
+    // Xor (Disyunción exclusiva)
+    // Si el primero es Falso, el resultado depende solo de b
+    Xor(Falso, b) = b
+    // Si el primero es Cierto, el resultado es lo contrario de b
+    Xor(Cierto, b) = NO b
+
+    // Implicacion
+    // Definición directa dada por el enunciado: "No a o b"
+    Implicacion(a, b) = (NO a) O b
