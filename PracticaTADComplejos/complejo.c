@@ -6,9 +6,13 @@ void CrearComplejo(float r, float i, t_complejo *c) {
   c->imaginario = i;
 }
 
-float parteReal(t_complejo c) { return c.real; }
+float parteReal(t_complejo c) { 
+  return c.real; 
+}
 
-float parteImaginaria(t_complejo c) { return c.imaginario; }
+float parteImaginaria(t_complejo c) { 
+  return c.imaginario; 
+}
 
 float Modulo(t_complejo c) {
   return sqrt(pow(c.real, 2) + pow(c.imaginario, 2));
