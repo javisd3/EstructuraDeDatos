@@ -14,7 +14,7 @@ int main() {
 
   Conjugado(z1, &res);
 
-  float mod = Modulo(z1);
+  Modulo(z1);
 
   return 0;
 }
