@@ -1,0 +1,30 @@
+Especificacion Entero
+Tipo TEntero
+
+Operaciones
+//const. generadores
+Cero: -> TEntero
+Succ: TEntero -> TEntero
+Pred: TEntero -> TEntero
+
+//const. no generadores
+Suma: TEntero x TEntero -> TEntero
+Resta: TEntero x TEntero -> TEntero
+
+Variables
+n1, n2 : TEntero
+
+Ecuacion entre generadores
+	Pred(Succ(n1)) = n1
+    Succ(Pred(n1)) = n1
+
+ECUACIONES
+	Suma(n1, Cero) = n1
+	Suma(n1, Pred(n2)) = Pred(Suma(n1, n2))
+    Suma(n1, Succ(n2)) = Succ(Suma(n1, n2))
+
+	Resta(n1, Cero) = n1
+	Resta(n1, Succ(n2)) = Pred(Resta(n1, n2))
+    Resta(n1, Pred(n2)) = Succ(Resta(n1, n2))
+
+FIN Especificacion

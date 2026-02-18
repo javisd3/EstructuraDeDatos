@@ -1,0 +1,28 @@
+Especificacion Bool
+Tipo TBool
+
+Operaciones
+//const. generadores
+False:->TBool
+True:->TBool
+//const. no generadores
+Not: Booleano -> Booleano
+OR: Booleano x Booleano -> Booleano
+AND: Booleano x Booleano -> Booleano
+
+Ecuaciones
+//const. no generadores
+Not(True) = False
+Not(False) = True
+
+OR(True,False) = True
+OR(False,True) = True
+OR(True,True) = True
+OR(False,False) = False
+
+AND(True,False) = False
+AND(False,True) = False
+AND(True,True) = True
+AND(False,False) = False
+
+FIN Especificacion

@@ -1,0 +1,31 @@
+Especificacion Bool
+Tipo TBool
+
+Operaciones
+//const. generadores
+True: -> TBool
+Not: TBool -> TBool
+//const. no generadores
+False: -> TBool -> TBool
+OR: TBool x TBool -> TBool
+AND: TBool x TBool -> TBool
+
+Variables
+a, b : TBool
+
+Ecuaciones
+//ecuaciones entre generadoras
+Not(Not(x1)) = x1
+//const. no generadores
+False = Not(True)
+
+And(a, true) = a
+And(a, Not(true)) = Not(true)
+And(a, Not(Not(b))) = AND(a, b)
+
+OR(a, true) = TRUE
+OR(a, Not(true)) = a
+OR(a, Not(Not(b))) = Or(a, b)
+
+
+FIN Especificacion
