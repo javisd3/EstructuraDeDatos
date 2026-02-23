@@ -2,24 +2,24 @@
 #include <stdlib.h>
 
 // 1. Definimos la estructura ANTES de usarla
-struct Videojuego {
+typedef struct {
     int codigo;
     float precio;
-};
+} Videojuego;
 
 // Declaración de la función. Fíjate que recibe el puntero a nuestra estructura
-float sumarPrecios(struct Videojuego *catalogo, int cantidad);
+float sumarPrecios(Videojuego *catalogo, int cantidad);
 
 int main() {
     int cantidad;
-    struct Videojuego *catalogo; // Nuestro puntero dinámico que apuntará a las fichas
+    Videojuego *catalogo; // Nuestro puntero dinámico que apuntará a las fichas
 
     printf("¿Cuántos videojuegos quieres registrar?: ");
     scanf("%d", &cantidad);
 
     // 2. ¡El Malloc! Reservamos espacio para 'cantidad' fichas enteras.
     // Igual que con los arrays dinámicos básicos[cite: 394], usamos sizeof.
-    catalogo = (struct Videojuego *) malloc(cantidad * sizeof(struct Videojuego));
+    catalogo = (Videojuego *) malloc(cantidad * sizeof(Videojuego));
 
     // Verificamos que el puntero no es NULL [cite: 395]
     if (catalogo == NULL) {
@@ -55,7 +55,7 @@ int main() {
 }
 
 // Definición de la función
-float sumarPrecios(struct Videojuego *catalogo, int cantidad) {
+float sumarPrecios(Videojuego *catalogo, int cantidad) {
     float suma = 0.0;
 
     // A partir de aquí utilizamos el puntero como un array normal [cite: 396]
