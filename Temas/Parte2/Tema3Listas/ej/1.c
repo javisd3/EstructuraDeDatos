@@ -11,7 +11,7 @@ tNodo* buscarListaNoOrdenada(tLista l, tElemento elem) {
         }
     }
 
-    // Si lo encuentra, 'aux' apuntará al nodo. Si no, habrá llegado a NULL.
+    // Si lo encuentra, aux apunta al nodo. Y si no, habrá llegado a NULL.
     return aux;
 }
 
