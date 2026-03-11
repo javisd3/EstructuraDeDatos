@@ -1,4 +1,4 @@
-tNodo* buscarListaNoOrdenada(tLista l, tElemento elem) {
+tNodo *buscarListaNoOrdenada(tLista l, tElemento elem) {
     tNodo *aux = l;
     int encontrado = 0;
 
@@ -15,7 +15,7 @@ tNodo* buscarListaNoOrdenada(tLista l, tElemento elem) {
     return aux;
 }
 
-tNodo* buscarListaOrdenada(tLista l, tElemento elem) {
+tNodo *buscarListaOrdenada(tLista l, tElemento elem) {
     tNodo *aux = l;
     int encontrado = 0;
     int parar = 0;
