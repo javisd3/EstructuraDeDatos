@@ -1,3 +1,4 @@
+
 typedef struct termino{
     float coeficiente;
     int exponente;
