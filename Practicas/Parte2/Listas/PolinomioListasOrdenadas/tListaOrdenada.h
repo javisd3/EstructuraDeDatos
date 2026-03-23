@@ -1,22 +1,18 @@
-// Constructoras generadoras
-void crearListaVacia(TLista *l);
-void construir(TLista *l, TElemento elem);
+#ifndef TLISTAORD_H
+#define TLISTAORD_H
+#include "telemento.h"
 
-// Observadoras selectoras
-void obtenerPrimeroLista(TLista l, TElemento* elem);
-void restoListaL (TLista *l);
+// Un nodo contiene la información (el término) y un puntero al siguiente nodo de la lista.
+typedef struct nodo {
+    tElemento info;
+    struct nodo *sig;
+} tNodo;
 
-// Observadoras no selectoras
-int esListaVacia(TLista l);
-int longitudLista (TLista l);
-int perteneceLista (TElemento e, TLista l);
-void ultimoLista(TElemento *e, TLista l);
+// tListaOrd es simplemente un puntero al primer nodo de la lista.
+typedef tNodo *tListaOrd;
 
-// Constructoras no generadoras
-void insertarListaFinal(TLista *l, TElemento elem);
-int eliminarElementoLista(TLista *l, TElemento elem);
-void concatenarLista (TLista *l1, TLista l2);
-int igualLista (TLista l1, TLista l2);
-void asignarLista (TLista original, TLista *copia);
-void destruirLista(TLista *l);
-void mostrarLista(TLista l);
+void crearListaVacia(tListaOrd *l);
+void insertarOrdDecreciente(tListaOrd *l, tElemento elem);
+void destruirLista(tListaOrd *l);
+
+#endif

@@ -1,10 +1,16 @@
-// Lee por teclado un polinomio
-tPolinomio *leerPolinomio();
-// Muestra por pantalla un polinomio
-void mostrar(tPolinomio p);
-// Devuelve la derivada de un polinomio
-void derivada(tPolinomio *pd, tPolinomio p);
-// Devuelve el valor de un polinomio aplicado a un valor x
-float valor(tPolinomio p, float x);
-// Devuelve la suma de dos polinomios
+#ifndef TPOLINOMIO_H
+#define TPOLINOMIO_H
+#include "tlistaord.h"
+
+// Aquí aplicamos "ocultación de la información".
+// Para el usuario, un Polinomio es un tipo de dato, aunque por debajo sea una lista ordenada.
+typedef tListaOrd tPolinomio;
+
+tPolinomio leerPolinomio();
+void mostrarPolinomio(tPolinomio p);
+void derivadaPolinomio(tPolinomio *pd, tPolinomio p);
+float valorPolinomio(tPolinomio p, float x);
 void sumarPolinomios(tPolinomio *s, tPolinomio p1, tPolinomio p2);
+void destruirPolinomio(tPolinomio *p);
+
+#endif
