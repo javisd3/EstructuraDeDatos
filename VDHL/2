@@ -1,0 +1,30 @@
+
+architecture estructural_pro of sistema_riego is
+    signal not_h  : std_logic;
+    signal dec_in : std_logic_vector(2 downto 0);
+    
+    signal m : std_logic_vector(15 downto 0);
+
+begin
+    dec_in(2) <= l;
+    dec_in(1) <= t;
+    dec_in(0) <= d;
+
+    inv_h: entity work.not1 port map(h, not_h);
+    deco_inf: entity work.deco3a8 port map(not_h, dec_in, m(7 downto 0));
+    deco_sup: entity work.deco3a8 port map(h, dec_in, m(15 downto 8));
+
+    or_v: entity work.or3 port map(m(1), m(3), m(11), v);
+    or_a: entity work.or3 port map(m(0), m(2), m(10), a);
+
+end estructural_pro;
+
+architecture estructural_ninja of sistema_riego is
+    signal m : std_logic_vector(15 downto 0); 
+begin
+    deco_inf: entity work.deco3a8 port map(not h, (l & t & d), m(7 downto 0));
+    deco_sup: entity work.deco3a8 port map(h,     (l & t & d), m(15 downto 8));
+
+    or_v: entity work.or3 port map(m(1), m(3), m(11), v);
+    or_a: entity work.or3 port map(m(0), m(2), m(10), a);
+end estructural_ninja;
