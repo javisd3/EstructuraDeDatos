@@ -1,0 +1,55 @@
+entity examen is
+  port(
+    p : in std_logic;
+    v: in std_logic_vector(2 downto 0);
+    f : out std_logic;
+);
+end examen;
+
+architecture concurrente of examen is
+  begin
+    f <= p and (v(1) or v(2) or v(3)) or (v(1) and v(2) and v(3));
+end concurrente;
+
+architecture estructural of examen is 
+    Signal or1, and1, and2: std_logic;
+  begin
+    primeror: entity work.or3 port map (v(0),v(1),v(2),or1);
+    primerand: entity work.and3 port map (v(0),v(1),v(2),and1);
+    segundoand: entity work.and2 port map (v(3),or1,and2);
+    segundoor: entity work.or2 port map (and2,and1,f);
+end estructural;
+
+--------------------------------------------------------------------------------------------------------
+
+
+
+
+entity examen is
+  port(
+    G, T45, T60, H , enable: in std_logic;
+    A : out std_logic
+);
+end examen;
+
+architecture concurrente of examen is
+begin
+  A <= T60 or (G and T45) or (T45 and H) or (G and H);
+end concurrente;
+
+architecture estructural of examen is
+signal dec_in: std_logic_vector(2 downto 0);
+signal m : std_logic_vector(7 downto 0);
+signal or1, and1: std_logic;
+
+begin
+  dec_in(2) <= G;
+  dec_in(1) <= T45;
+  dec_in(0) <= T60;
+  
+  deco3a8: entity work.deco3a8 port map(enable, dec_in, m);
+  Puerta_or1: entity work.or2 port map (m(2),m(4),or1);
+  Puerta_and1: entity work.and2 port map (or1,H,and1);
+  orfinal: entity work.or4 port map (m(3),and1,m(6),m(7),A);
+  
+end estructural;
