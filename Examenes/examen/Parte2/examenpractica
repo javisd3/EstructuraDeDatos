@@ -1,0 +1,7 @@
+void extraerNegativos(tCola *c, tCola *cNegativos){
+    while(c->sig != NULL){
+        if (c->info < 0){
+            
+        }
+    }
+}
