@@ -63,3 +63,56 @@ int pertenece(tArbol a, tElemento){
     }
     return esta;
 }
+
+int nivelElemento(tArbol a, tElemento e){
+    tElemento r;
+    tArbol hi, hd;
+    int nivel;
+    
+    if(EsArbolVacio(a)){
+        nivel = 0;
+    }else{
+        Raiz(a, &r);
+        if(igualElemento(e, r)){
+            nivel = 1
+    }else{
+            HijoIzq(a, &hi);
+            HijoDer(a, &hd); 
+            if (pertenece(hi, e)){
+                if (pertenece(hd, e)){
+                    nivel = 1 + min(nivelElemento(hi, e), nivelElemento(hd, e));
+            }else{
+                nivel = 1 + nivelElemento(hi,e);
+            }
+        }
+    }
+    return nivel;
+}
+
+void simetrico (tArbol a, tArbol *as){
+    tElemento r;
+    tArbol hi, hd,hsi, hsd;
+    if(EsArbolVacio(a)){
+        crearArbolVacio(as);
+    }else{
+        Raiz(a, &r);
+        HijoIzq(a, &hi);
+        HijoDer(a, &hd);    
+        simetrico(hd,&hds);
+        simetrico(hi,&his);
+        ConstruirArbolBin(&as, hds, r, his);
+    }
+}
+
+int iguales(tArbol a, tArbol b){
+    telemento r;
+    tArbol hi, hd;
+    int igual;
+
+    if(EsArbolVacio(a)){
+        igual = EsArbolVacio(b);
+    }else if (!EsArbolVacio(b)){
+        Raiz(a, &r);
+        Raiz(b, &r2);
+        if(igualElemento(r, r2)){   
+    
