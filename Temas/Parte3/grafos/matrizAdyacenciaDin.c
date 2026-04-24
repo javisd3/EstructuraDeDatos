@@ -22,3 +22,5 @@ void insertarAristas((tGrafo *g, tVertice v1, tVertice v2){
 int esGrafoVacio(tGrafo g);
 void adyacentes(tGrafo g, tVertice v, tConjunto *ady);
 int sonAdyacentes(tGrafo g, tVertice v1, tVertice v2);
+
+void recorridoAnchura(tGrado *g, tElemento ,tLista *)
