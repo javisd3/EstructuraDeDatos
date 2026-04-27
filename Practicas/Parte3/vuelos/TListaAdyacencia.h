@@ -8,4 +8,4 @@ typedef struct NodoAdy{
     struct NodoAdy *sig;
 }tNodoAdy;
 
-typedef  tNodoAdy *ListaAdy;
+typedef  tNodoAdy *tListaAdy;
