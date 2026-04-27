@@ -7,3 +7,9 @@ while no sea fin de fichero
     leer tres lineas siguientes
     crear vuelo V
     insertarArista(g, A, B, vuelo)
+
+
+
+    void quitarCaracteresFinales(char cadena[20]){
+        cadena[strlen(cadena)-2] = '\0';
+    }
