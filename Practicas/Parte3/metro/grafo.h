@@ -2,14 +2,14 @@
 #define GRAFO_H
 #include "elemento.h"
 
-typedef struct NodoVertice* tGrafo;
+typedef struct NodoVertice *tGrafo;
 
 // Una lista simple para devolver las adyacencias [cite: 50]
 typedef struct NodoListaAdy {
     tElemento info;
     struct NodoListaAdy *sig;
 } tNodoListaAdy;
-typedef tNodoListaAdy* tLista;
+typedef tNodoListaAdy *tLista;
 
 void crearGrafoVacio(tGrafo *g);
 int esGrafoVacio(tGrafo g);
