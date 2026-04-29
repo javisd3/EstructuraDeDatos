@@ -12,4 +12,5 @@ typedef tNodoConjunto* tConjunto;
 void crearConjuntoVacio(tConjunto *c);
 void insertarConjunto(tConjunto *c, tElemento e);
 int perteneceConjunto(tConjunto c, tElemento e);
+
 #endif

@@ -10,22 +10,20 @@ int esColaVacia(tCola c) {
     return c.frente == NULL;
 }
 
-void encolar(tCola *c, tDatoCola d) {
+void encolar(tCola *c, tElemento d) {
     tNodoCola *nuevo = (tNodoCola*)malloc(sizeof(tNodoCola));
     nuevo->dato = d;
     nuevo->sig = NULL;
-    if (esColaVacia(*c)) {
-        c->frente = nuevo;
-    } else {
-        c->final->sig = nuevo;
-    }
+    if (esColaVacia(*c)) c->frente = nuevo;
+    else c->final->sig = nuevo;
     c->final = nuevo;
 }
 
-tDatoCola desencolar(tCola *c) {
-    if (esColaVacia(*c)) return NULL;
+tElemento desencolar(tCola *c) {
+    tElemento d;
+    if (esColaVacia(*c)) return d;
     tNodoCola *aux = c->frente;
-    tDatoCola d = aux->dato;
+    d = aux->dato;
     c->frente = aux->sig;
     if (c->frente == NULL) c->final = NULL;
     free(aux);

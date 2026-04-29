@@ -7,7 +7,9 @@ typedef struct {
     int numLineas;
 } tElemento;
 
-void inicializarEstacion(tElemento *e, char *nombre, int linea);
+void inicializarEstacion(tElemento *e, const char *nombre, int linea);
 void añadirLinea(tElemento *e, int linea);
 int sonEstacionesIguales(tElemento e1, tElemento e2);
+void mostrarEstacion(tElemento e);
+
 #endif

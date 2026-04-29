@@ -1,10 +1,9 @@
 #ifndef COLA_H
 #define COLA_H
-
-typedef void* tDatoCola; // Usamos void* para que sea una cola genérica
+#include "elemento.h"
 
 typedef struct NodoCola {
-    tDatoCola dato;
+    tElemento dato;
     struct NodoCola *sig;
 } tNodoCola;
 
@@ -15,6 +14,7 @@ typedef struct {
 
 void crearColaVacia(tCola *c);
 int esColaVacia(tCola c);
-void encolar(tCola *c, tDatoCola d);
-tDatoCola desencolar(tCola *c);
+void encolar(tCola *c, tElemento d);
+tElemento desencolar(tCola *c);
+
 #endif

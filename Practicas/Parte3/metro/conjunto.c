@@ -1,11 +1,8 @@
 #include <stdlib.h>
 #include "conjunto.h"
 
-void crearConjuntoVacio(tConjunto *c) {
-    *c = NULL;
-}
+void crearConjuntoVacio(tConjunto *c) { *c = NULL; }
 
-// Inserta si no existe (evita duplicados)
 void insertarConjunto(tConjunto *c, tElemento e) {
     if (!perteneceConjunto(*c, e)) {
         tNodoConjunto *nuevo = (tNodoConjunto*)malloc(sizeof(tNodoConjunto));
