@@ -1,0 +1,55 @@
+architecture puramente_estructural of practica_2 is
+    signal q, d : std_logic_vector(2 downto 0);
+    signal cable_not_x, cable_and_1 : std_logic;
+begin
+    -- En lugar de "not x", instancias un inversor físico
+    inversor1: entity work.puerta_NOT port map(in_A => x, out_Y => cable_not_x);
+    
+    -- En lugar de "and", instancias una puerta AND de 3 entradas
+    and_d2: entity work.puerta_AND3 port map(
+        in_A => cable_not_x, 
+        in_B => q(1), 
+        in_C => q(0), 
+        out_Y => d(2)
+    );
+    
+    -- Y finalmente el biestable
+    puertaq2: entity work.flipflopD port map(clk, rst, d(2), q(2));
+    
+    -- ... (Imagina hacer esto para todas las ecuaciones, ¡una locura de líneas!)
+end puramente_estructural;
+
+---------------------------------------------
+architecture comportamental of practica_2 is
+    -- Definimos los estados con nombres reales
+    type tipo_estado is (S0, S1, S2, S3, S4);
+    signal estado_actual, estado_siguiente : tipo_estado;
+begin
+
+    -- Proceso 1: La memoria (El reloj que actualiza el estado)
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            estado_actual <= S0;
+        elsif rising_edge(clk) then
+            estado_actual <= estado_siguiente;
+        end if;
+    end process;
+
+    -- Proceso 2: La lógica de saltos (Sustituye a Karnaugh)
+    process(estado_actual, x)
+    begin
+        case estado_actual is
+            when S0 =>
+                if x = '1' then estado_siguiente <= S1;
+                else estado_siguiente <= S0;
+                end if;
+            when S1 =>
+                -- ... y así sucesivamente para todos los estados
+        end case;
+    end process;
+
+    -- Salida Moore
+    z <= '1' when estado_actual = S4 else '0';
+
+end comportamental;
