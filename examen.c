@@ -57,3 +57,23 @@ int existePacto(tGrafo g, tElemento uno, tElemento dos) {
     }
     return 0;
 }
+------------------
+tNodoLista* buscarEstacion(tGrafo g, tElemento buscada) {* buscarEstacion(tGrafo g, tElemento buscada) {
+    tNodoLista *aux = g;
+
+    while (aux != NULL){
+        if (iguales(aux->info, buscada){
+        return aux;
+        }
+    aux = aux->sig;
+    }
+    return NULL;
+}
+
+int hayRutaDirecta(tGrafo g, tElemento origen, tElemento destino) {
+    tNodoLista *aux = buscarEstacion(g, origen);
+
+    if (origen == NULL){
+        return 0;
+    }
+    

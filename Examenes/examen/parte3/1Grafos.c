@@ -44,8 +44,6 @@ void registrarAeropuerto(tGrafo *g, char *iata, char *ciudad, int pistas) {
     *g = nuevoNodo;
 }
 
-#include <stdlib.h>
-#include <string.h> // Necesario para strcmp
 
 void crearRuta(tGrafo *g, char *iataOrigen, char *iataDestino, int numVuelo, int distancia){
     tNodoAeropuerto *aux = *g;
