@@ -80,7 +80,6 @@ void imprimirServidoresPorRegion(tGrafo g, char *regionBuscada) {
     while (aux != NULL){
 
         if (strcmp(obtenerRegion(aux->info), regionBuscada) == 0){
-            // Imprimimos el ID usando el formato %s para texto
             printf("%s\n", obtenerID(aux->info));
         }
         aux = aux->sig; 
