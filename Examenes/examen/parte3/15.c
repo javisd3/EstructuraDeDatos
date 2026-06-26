@@ -21,3 +21,4 @@ float SumarHojas(tArbol a){
     }
     return loQueYoAporto + SumarHojas(izq) + SumarHojas(der);
 }
+

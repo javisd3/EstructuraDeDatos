@@ -75,22 +75,54 @@ aux=aux->sig;
 void mutantesAfines(tRedMutantes *g, tMutante m, tLista *pListaAfines) {
     tNodo *aux = *g;
 
-    while(aux != NULL){
-        if(iguales(aux->info, m) == 1){
+    while(aux != NULL) {
+        // Encontramos a nuestro mutante 'm'
+        if(iguales(aux->info, m) == 1) {
+            
             tlistaAdy *act = aux->afines;
-            while(act != NULL){
-                if(act->afinidad == 1){
+            
+            // Recorremos sus conexiones
+            while(act != NULL) {
+                // Si le cae bien alguien...
+                if(act->afinidad == 1) {
                     tMutante posible = act->vinculo;
-
-                    if(esAmigoReciproco(g,m,posible) == 1{
-                    insertar(pListaAfines, posible);
+                    
+                    // ¡MAGIA! Llamamos a la función auxiliar para no anidar código
+                    if(esAmigoReciproco(g, m, posible) == 1) {
+                        insertar(pListaAfines, posible);
                     }
-                } 
-            act = act->sig;
+                }
+                act = act->sig; // Avanzamos al siguiente amigo
             }
-            return;
+            
+            return; // Ya hemos procesado a 'm', salimos de la función principal
         }
-    aux = aux->sig;
+        
+        aux = aux->sig; // Avanzamos al siguiente mutante de la red
     }
+}
+
+
+int esAmigoReciproco(tRedMutantes *g, tMutante origen, tMutante destino) {
+    tNodo *aux = *g;
+    
+    // 1. Buscamos al posible amigo en la red
+    while(aux != NULL) {
+        if(iguales(aux->info, destino) == 1) {
+            
+            // 2. Entramos en su lista de amigos
+            tlistaAdy *act = aux->afines;
+            while(act != NULL) {
+                // Si en su lista está nuestro mutante original con afinidad 1, ¡es recíproco!
+                if(iguales(act->vinculo, origen) == 1 && act->afinidad == 1) {
+                    return 1; 
+                }
+                act = act->sig;
+            }
+            return 0; // Si miramos su lista y no estábamos, no es recíproco
+        }
+        aux = aux->sig;
+    }
+    return 0; // Si ni siquiera encontramos al mutante
 }
 ---------------------------------------------------------------------------------------------
